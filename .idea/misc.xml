@@ -31,4 +31,16 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/src/styles/components/page.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/poptip.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/progress.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/rate.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/scroll.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/spin.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/time-picker.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/timeline.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/transfer.less" />
+    <file url="file://$PROJECT_DIR$/src/styles/components/upload.less" />
+  </component>
 </project>

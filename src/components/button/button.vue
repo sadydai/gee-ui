@@ -4,9 +4,11 @@
         :class="classes"
         :disabled="disabled"
         @click="handleClick">
-        <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon>
-        <Icon :type="icon" v-if="icon && !loading"></Icon>
+
+        <Icon :type="icon" v-if="icon && !loading && iconPosition == 'left'"></Icon>
         <span v-if="showSlot" ref="slot"><slot></slot></span>
+        <Icon :type="icon" v-if="icon && !loading && iconPosition == 'right'"></Icon>
+        <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon>
     </button>
 </template>
 <script>
@@ -21,7 +23,7 @@
         props: {
             type: {
                 validator (value) {
-                    return oneOf(value, ['primary', 'ghost', 'dashed', 'text', 'info', 'success', 'warning', 'error', 'default']);
+                    return oneOf(value, ['primary', 'ghost', 'dashed', 'text', 'info', 'success', 'warning', 'error', 'default','primary-arrow']);
                 }
             },
             shape: {
@@ -41,6 +43,13 @@
                 validator (value) {
                     return oneOf(value, ['button', 'submit', 'reset']);
                 }
+            },
+            iconPosition:{
+                default: 'left',
+                validator (value) {
+                    return oneOf(value, ['left', 'right']);
+                }
+
             },
             icon: String,
             long: {
@@ -63,7 +72,8 @@
                         [`${prefixCls}-${this.shape}`]: !!this.shape,
                         [`${prefixCls}-${this.size}`]: !!this.size,
                         [`${prefixCls}-loading`]: this.loading != null && this.loading,
-                        [`${prefixCls}-icon-only`]: !this.showSlot && (!!this.icon || this.loading)
+                        [`${prefixCls}-icon-only`]: !this.showSlot && (!!this.icon || this.loading),
+                        //[`${prefixCls}-icon-right`]:
                     }
                 ];
             }

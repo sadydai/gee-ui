@@ -4,11 +4,11 @@
     .btn;
     .btn-default;
 
-    &-long{
+    &-long {
         width: 100%;
     }
 
-    & > .ivu-icon + span, & > span + .ivu-icon{
+    & > .ivu-icon + span, & > span + .ivu-icon {
         margin-left: 4px;
     }
 
@@ -64,11 +64,11 @@
         .btn-ghost;
     }
 
-    &-dashed{
+    &-dashed {
         .btn-dashed;
     }
 
-    &-text{
+    &-text {
         .btn-text;
     }
 
@@ -86,6 +86,20 @@
 
     &-info {
         .btn-color(@info-color);
+    }
+    &-primary-arrow {
+        .btn-color(@primary-color);
+        .ivu-icon {
+            position: relative;
+            left: 4px;
+            transition: left @transition-time ease;
+        }
+    }
+    &-primary-arrow:hover {
+        .ivu-icon {
+            left: 6px;
+            transition: left @transition-time ease;
+        }
     }
 
     &-circle,

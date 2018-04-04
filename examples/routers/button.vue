@@ -1,10 +1,13 @@
 <template>
     <div>
         <Button>Default</Button>
-        <Button type="primary">Primary</Button>
+        <Button type="primary" icon="ios-search">Primary</Button>
         <Button type="ghost">Ghost</Button>
         <Button type="dashed">Dashed</Button>
         <Button type="text">Text</Button>
+        <Button type="primary-arrow"  icon ="ios-search" iconPosition="right" @click="loading =true" :loading=loading>
+            primary-arrow
+        </Button>
         <br><br>
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>
@@ -133,6 +136,10 @@
 </template>
 <script>
     export default {
-
+        data(){
+            return {
+                loading:false
+            }
+        }
     }
 </script>
