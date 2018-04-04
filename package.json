@@ -3,7 +3,7 @@
   "version": "2.11.0",
   "title": "gee-ui",
   "description": "A high quality  UI components Library with Vue.js",
-  "homepage": "http://www.iviewui.com",
+  "homepage": "",
   "keywords": [
     "geetest",
     "vue",
@@ -13,7 +13,7 @@
     "ui",
     "framework"
   ],
-  "main": "dist/gee.js",
+  "main": "",
   "files": [
     "dist",
     "src"
@@ -110,6 +110,7 @@
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^3.0.0"
+
   },
   "engines": {
     "node": ">= 6.0.0",
