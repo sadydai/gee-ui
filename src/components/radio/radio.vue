@@ -2,6 +2,7 @@
     <label :class="wrapClasses">
         <span :class="radioClasses">
             <span :class="innerClasses"></span>
+            <span :class="correctClasses"></span>
             <input
                 type="radio"
                 :class="inputClasses"
@@ -95,7 +96,11 @@
             },
             inputClasses () {
                 return `${prefixCls}-input`;
+            },
+            correctClasses () {
+                return `${prefixCls}-correct`
             }
+
         },
         mounted () {
             if (this.parent) {

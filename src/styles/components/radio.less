@@ -1,12 +1,10 @@
 @radio-prefix-cls: ~"@{css-prefix}radio";
 @radio-group-prefix-cls: ~"@{radio-prefix-cls}-group";
 @radio-inner-prefix-cls: ~"@{radio-prefix-cls}-inner";
+@radio-correct-prefix-cls: ~"@{radio-prefix-cls}-correct";
 @radio-group-button-prefix-cls: ~"@{radio-group-prefix-cls}-button";
 
-.@{radio-prefix-cls}-focus {
-    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
-    z-index: 1;
-}
+
 
 .@{radio-group-prefix-cls} {
     display: inline-block;
@@ -31,6 +29,7 @@
     white-space: nowrap;
     margin-right: 8px;
     cursor: pointer;
+    color: fade(@text-color,80%);
     &-disabled{
         cursor: @cursor-disabled;
     }
@@ -41,7 +40,6 @@
     display: inline-block;
     margin-right: 4px;
     white-space: nowrap;
-    //outline: none;
     position: relative;
     line-height: 1;
     vertical-align: middle;
@@ -53,8 +51,8 @@
     }
     &-inner {
         display: inline-block;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         position: relative;
         top: 0;
         left: 0;
@@ -65,11 +63,11 @@
 
         &:after {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            left: 2px;
-            top: 2px;
-            border-radius: @border-radius-base;
+            width: 16px;
+            height: 16px;
+            left: -1px;
+            top: -1px;
+            border-radius: 50%;
             display: table;
             border-top: 0;
             border-left: 0;
@@ -86,25 +84,14 @@
             width: 16px;
             height: 16px;
             &:after{
-                width: 10px;
-                height: 10px;
+                width: 16px;
+                height: 16px;
             }
         }
         &.@{radio-prefix-cls}-wrapper, & .@{radio-prefix-cls}-wrapper{
             font-size: @font-size-base;
         }
     }
-    &-small{
-        & .@{radio-inner-prefix-cls}{
-            width: 12px;
-            height: 12px;
-            &:after{
-                width: 6px;
-                height: 6px;
-            }
-        }
-    }
-
     &-input {
         position: absolute;
         top: 0;
@@ -117,21 +104,44 @@
     }
 }
 
-// 选中状态 - Selected state
+.@{radio-correct-prefix-cls} {
+    position: absolute;
+    background-image: url("../../../assets/gou.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transform: translate(-2px,1px);
+    opacity: 0;
+}
+// 选中状态 - Selected state // checked 样式
 .@{radio-prefix-cls}-checked {
     .@{radio-inner-prefix-cls} {
-        border-color: @primary-color;
+        border: 1px solid @primary-color;
         &:after {
             opacity: 1;
             transform: scale(1);
             transition: all @transition-time @ease-in-out;
+
         }
+    }
+    .@{radio-correct-prefix-cls} {
+
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        z-index: 3;
+        background-size: 108%;
+        left: 1px;
+        transition: all @transition-time .1s @ease-in-out;
+        transform: translate(0px,-1px);
+        opacity: 1;
+
     }
     &:hover {
         .@{radio-inner-prefix-cls} {
             border-color: @primary-color;
         }
     }
+
 }
 
 .@{radio-prefix-cls}-disabled {
@@ -163,81 +173,54 @@ span.@{radio-prefix-cls} + * {
     margin-right: 2px;
 }
 
+
+
+
 // 按钮样式 - Button style
 .@{radio-group-button-prefix-cls} {
     font-size: 0;
     -webkit-text-size-adjust:none;
 
     .@{radio-prefix-cls}{
-        width: 0;
-        margin-right: 0;
+        width: 16px;
+        margin-right: 4px;
+        position: absolute;
+        top: 14px;
+        left: 20px;
+        opacity: 0;
     }
 
     .@{radio-prefix-cls}-wrapper {
         display: inline-block;
-        height: @btn-circle-size;
-        line-height: @btn-circle-size - 2px;
+        height: @input-height-base;
+        line-height: @input-height-base - 2px;
         margin: 0;
-        padding: 0 16px - 1px;
-        font-size: @font-size-small;
-        color: @btn-default-color;
+        font-size: @font-size-large;
         transition: all @transition-time ease-in-out;
         cursor: pointer;
         border: 1px solid @border-color-base;
-        border-left: 0;
         background: #fff;
         position: relative;
-
+        width: 137px;
+        border-radius: @btn-border-radius-small;
+        padding-left: 35px;
         > span {
             margin-left: 0;
         }
 
-        &:before, &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            left: -1px;
-            top: 0;
-            background: @border-color-base;
-            //visibility: hidden;
-            transition: all @transition-time ease-in-out;
-        }
-
-        &:after{
-            height: @btn-circle-size + 4px;
-            left: -1px;
-            top: -3px;
-            background: fade(@primary-color, 20%);
-            opacity: 0;
-        }
-
-        &:first-child {
-            border-radius: @btn-border-radius 0 0 @btn-border-radius;
-            border-left: 1px solid @border-color-base;
-            &:before, &:after {
-                display: none;
-            }
-        }
-
         &:last-child {
-            border-radius: 0 @btn-border-radius @btn-border-radius 0;
+            margin-left: 16px;
         }
-
-        &:first-child:last-child {
-            border-radius: @btn-border-radius;
-        }
-
         &:hover {
             position: relative;
-            color: @primary-color;
-            & .@{radio-prefix-cls} {
-                background-color: black;
-            }
+            border-color: fade(@primary-color,40%);
+
         }
 
-        .@{radio-prefix-cls}-inner,
+        .@{radio-prefix-cls}-inner{
+            //opacity: 0;
+            //position: relative;
+        }
         input {
             opacity: 0;
             width: 0;
@@ -245,28 +228,30 @@ span.@{radio-prefix-cls} + * {
         }
 
         &-checked {
-            background: #fff;
+            background: @input-active-bg;
             border-color: @primary-color;
             color: @primary-color;
-            box-shadow: -1px 0 0 0 @primary-color;
             z-index: 1;
+            padding-left: 48px;
+            transition: padding-left @transition-time cubic-bezier(0.03, 1.14, 0.54, 0.44);
+            font-weight: 500;
 
             &:before{
                 background: @primary-color;
                 opacity: 0.1;
             }
-
+            .@{radio-prefix-cls} {
+                opacity: 1;
+                left: 25px;
+                transition: left .1s ease;
+            }
             &.@{radio-prefix-cls}-focus{
-                box-shadow: -1px 0 0 0 @primary-color, 0 0 0 2px fade(@primary-color, 20%);
-                transition: all @transition-time ease-in-out;
+                box-shadow: none;
                 &:after{
                     left: -3px;
                     top: -3px;
                     opacity: 1;
                     background: fade(@primary-color, 20%);
-                }
-                &:first-child{
-                    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
                 }
             }
 
@@ -277,15 +262,12 @@ span.@{radio-prefix-cls} + * {
 
             &:hover {
                 border-color: tint(@primary-color, 20%);
-                //box-shadow: -1px 0 0 0 tint(@primary-color, 20%);
                 color: tint(@primary-color, 20%);
             }
-
-            &:active {
-                border-color: shade(@primary-color, 5%);
-                //box-shadow: -1px 0 0 0 shade(@primary-color, 5%);
-                color: shade(@primary-color, 5%);
+            .@{radio-prefix-cls}-inner {
+                opacity: 1;
             }
+
         }
 
         &-disabled {
@@ -315,29 +297,12 @@ span.@{radio-prefix-cls} + * {
 }
 
 .@{radio-group-button-prefix-cls}.@{radio-group-prefix-cls}-large .@{radio-prefix-cls}-wrapper{
-    height: @btn-circle-size-large;
-    line-height: @btn-circle-size-large - 2px;
-    font-size: @font-size-base;
+    height: @input-height-base;
+    line-height: @input-height-base - 2px;
+    font-size: @font-size-large;
     &:after{
-        height: @btn-circle-size-large + 4px;
+        height: @input-height-base + 4px;
     }
 }
 
-.@{radio-group-button-prefix-cls}.@{radio-group-prefix-cls}-small .@{radio-prefix-cls}-wrapper{
-    height: @btn-circle-size-small;
-    line-height: @btn-circle-size-small - 2px;
-    padding: 0 12px;
-    font-size: @font-size-small;
-
-    &:after{
-        height: @btn-circle-size-small + 4px;
-    }
-
-    &:first-child {
-        border-radius: @btn-border-radius-small 0 0 @btn-border-radius-small;
-    }
-    &:last-child {
-        border-radius: 0 @btn-border-radius-small @btn-border-radius-small 0;
-    }
-}
 

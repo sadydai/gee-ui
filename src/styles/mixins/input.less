@@ -8,7 +8,7 @@
 .active(@color: @input-hover-border-color) {
     border-color: tint(@color, 20%);
     outline: 0;
-    box-shadow: 0 0 0 2px fade(@color, 20%);
+    box-shadow: 0 0 3px 0 fade(@color, 49%);
 }
 .active-error() {
     border-color: @error-color;
@@ -44,16 +44,16 @@
     height: @input-height-base;
     line-height: @line-height-base;
     padding: @input-padding-vertical-base @input-padding-horizontal;
-    font-size: @font-size-small;
+    font-size: @font-size-base;
     border: 1px solid @input-border-color;
-    border-radius: @btn-border-radius;
+    border-radius: @btn-border-radius-small;
     color: @input-color;
     background-color: @input-bg;
     background-image: none;
     position: relative;
     cursor: text;
     .placeholder();
-    transition: border @transition-time @ease-in-out, background @transition-time @ease-in-out, box-shadow @transition-time @ease-in-out;
+    transition: border @transition-time @ease-in-out, box-shadow @transition-time @ease-in-out;
 
     &:hover {
         .hover();
@@ -87,6 +87,7 @@
     }
 }
 
+
 .input-error() {
     border: 1px solid @error-color;
     &:hover {
@@ -102,7 +103,7 @@
     width: 100%;
     border-collapse: separate;
     position: relative;
-    font-size: @font-size-small;
+    font-size: @font-size-base;
     top: 1px; // fixed when using in form inline,
 
     &-large{
@@ -124,10 +125,6 @@
     &-append,
     > .@{inputClass} {
         display: table-cell;
-
-        //&:not(:first-child):not(:last-child) {
-        //    border-radius: 0;
-        //}
     }
     &-with-prepend .@{inputClass},
     &-with-prepend&-small .@{inputClass}
@@ -167,18 +164,18 @@
         z-index: 2;
     }
 
-    &-prepend,
-    &-append
+    &-prepend
     {
         padding: @input-padding-vertical-base @input-padding-horizontal;
         font-size: inherit;
         font-weight: normal;
         line-height: 1;
-        color: @input-color;
+        color: @input-prepend-icon;
         text-align: center;
-        background-color: #eee;
+        background-color: @input-active-bg;
         border: 1px solid @input-border-color;
-        border-radius: @border-radius-base;
+        border-radius: @btn-border-radius-small;
+        width: @input-append-head;
 
         // Reset Select's style in addon
         .@{css-prefix}select {
@@ -189,11 +186,22 @@
                 margin: -1px;
                 border: 1px solid transparent;
             }
-
             &-visible .@{css-prefix}select-selection{
                 box-shadow: none;
             }
         }
+    }
+    &-append {
+        padding: @input-padding-vertical-base @input-padding-horizontal;
+        font-size: inherit;
+        font-weight: normal;
+        line-height: 1;
+        color: @input-color;
+        text-align: center;
+        width: @input-append-head;
+    }
+    &-append .hide-opcity {
+        color: fade(@input-color , 70%);
     }
 
     // Reset rounded corners
@@ -214,6 +222,38 @@
     &-prepend {
         border-right: 0;
     }
+    &-with-prepend {
+        border: 1px solid @input-border-color;
+        border-radius: @border-radius-small;
+        &:hover{
+            .hover();
+        }
+    }
+    &-with-prepend > &-prepend ,
+    &-with-prepend > input,
+    &-with-prepend > &-append
+    {
+        border: none;
+    }
+    &-with-prepend > &-prepend {
+        border-right: 1px solid @border-color-base;
+    }
+    &-with-prepend > input:focus {
+        box-shadow: none;
+    }
+    &-active {
+        background: @input-active-bg;
+        .active()
+    }
+    &-active > &-prepend {
+        background: @primary-color;
+        color:@input-bg ;
+        border-right: 1px solid @primary-color;
+    }
+    &-active > input {
+        background: @input-active-bg;
+    }
+
     &-append {
         border-left: 0;
     }
@@ -245,6 +285,7 @@
     {
         .input-small();
     }
+
 }
 
 .input-group-error{

@@ -3,11 +3,11 @@
 @css-prefix-iconfont    : ivu-icon;
 
 // Color
-@primary-color          : #005EFF;
+@primary-color          : #2461F6;
 @info-color             : #2db7f5;
 @success-color          : #19be6b;
 @warning-color          : #ff9900;
-@error-color            : #ed3f14;
+@error-color            : #D36B75;
 @link-color             : #2D8cF0;
 @link-hover-color       : tint(@link-color, 20%);
 @link-active-color      : shade(@link-color, 5%);
@@ -18,10 +18,11 @@
 
 // Base
 @body-background        : #fff;
-@font-family            : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+@font-family            : "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 @code-family            : Consolas,Menlo,Courier,monospace;
 @title-color            : #1c2438;
-@text-color             : #495060;
+@text-color             : #082155;
+@font-size-large        : 16px;
 @font-size-base         : 14px;
 @font-size-small        : 12px;
 @line-height-base       : 1.5;
@@ -31,7 +32,7 @@
 @cursor-disabled        : not-allowed;
 
 // Border color
-@border-color-base      : #dddee1;  // outside
+@border-color-base      : #DCE1E6;  // outside
 @border-color-split     : #e9eaec;  // inside
 
 // Background color
@@ -107,23 +108,26 @@
 @legend-color           : #999;
 
 // Input
-@input-height-base           : 32px;
-@input-height-large          : 36px;
+@input-height-base           : 44px;
+@input-height-large          : 44px;
 @input-height-small          : 24px;
+@input-append-head           : 40px;
 
-@input-padding-horizontal    : 7px;
-@input-padding-vertical-base : 4px;
-@input-padding-vertical-small: 1px;
-@input-padding-vertical-large: 6px;
+@input-padding-horizontal    : 12px;
+@input-padding-vertical-base : 12px;
+@input-padding-vertical-small: 12px;
+@input-padding-vertical-large: 12px;
 
 @input-placeholder-color     : @btn-disable-color;
-@input-color                 : @text-color;
+@input-color                 : fade(@text-color,70%);
 @input-border-color          : @border-color-base;
 @input-bg                    : #fff;
+@input-active-bg             : #F6F9FC;
 
 @input-hover-border-color    : @primary-color;
 @input-focus-border-color    : @primary-color;
 @input-disabled-bg           : #f3f3f3;
+@input-prepend-icon          : #93A2BB;
 
 // Tag
 @tag-font-size          : 12px;

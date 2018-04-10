@@ -52,6 +52,8 @@ import {Row, Col} from './components/grid';
 import {Select, Option, OptionGroup} from './components/select';
 import locale from './locale/index';
 
+import InputField from "./components/input-field"
+
 const components = {
     Affix,
     Alert,
@@ -120,7 +122,8 @@ const components = {
     Tooltip,
     Transfer,
     Tree,
-    Upload
+    Upload,
+    InputField
 };
 
 const iview = {

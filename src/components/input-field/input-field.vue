@@ -1,53 +1,23 @@
 <template>
     <div :class="wrapClasses">
-        <template v-if="type !== 'textarea'">
-            <div :class="[prefixCls + '-group-prepend']" v-if="prepend" v-show="slotReady"><slot name="prepend"></slot></div>
-            <i class="ivu-icon" :class="['ivu-icon-ios-close', prefixCls + '-icon', prefixCls + '-icon-clear' , prefixCls + '-icon-normal']" v-if="clearable && currentValue" @click="handleClear"></i>
-            <i class="ivu-icon" :class="['ivu-icon-' + icon, prefixCls + '-icon', prefixCls + '-icon-normal']" v-else-if="icon" @click="handleIconClick"></i>
-            <transition name="fade">
-                <i class="ivu-icon ivu-icon-load-c ivu-load-loop" :class="[prefixCls + '-icon', prefixCls + '-icon-validate']" v-if="!icon"></i>
-            </transition>
-            <input
-                    :id="elementId"
-                    :autocomplete="autocomplete"
-                    :spellcheck="spellcheck"
-                    ref="input"
-                    :type="type"
-                    :class="inputClasses"
-                    :placeholder="placeholder"
-                    :disabled="disabled"
-                    :maxlength="maxlength"
-                    :readonly="readonly"
-                    :name="name"
-                    :value="currentValue"
-                    :number="number"
-                    :autofocus="autofocus"
-                    @keyup.enter="handleEnter"
-                    @keyup="handleKeyup"
-                    @keypress="handleKeypress"
-                    @keydown="handleKeydown"
-                    @focus="handleFocus"
-                    @blur="handleBlur"
-                    @input="handleInput"
-                    @change="handleChange">
-            <div :class="[prefixCls + '-group-append']" v-if="append" v-show="slotReady"><slot name="append"></slot></div>
-        </template>
-        <textarea
-                v-else
+        <div :class="[prefixCls + '-group-prepend' ]" v-if="prepend" v-show="slotReady">
+            <!--<slot name="prepend"></slot>-->
+            <Icon v-if="prepend" :type="icon"></Icon>
+        </div>
+        <input
                 :id="elementId"
-                :wrap="wrap"
                 :autocomplete="autocomplete"
                 :spellcheck="spellcheck"
-                ref="textarea"
-                :class="textareaClasses"
-                :style="textareaStyles"
+                ref="input"
+                :type="type"
+                :class="inputClasses"
                 :placeholder="placeholder"
                 :disabled="disabled"
-                :rows="rows"
                 :maxlength="maxlength"
                 :readonly="readonly"
                 :name="name"
                 :value="currentValue"
+                :number="number"
                 :autofocus="autofocus"
                 @keyup.enter="handleEnter"
                 @keyup="handleKeyup"
@@ -55,17 +25,22 @@
                 @keydown="handleKeydown"
                 @focus="handleFocus"
                 @blur="handleBlur"
-                @input="handleInput">
-        </textarea>
+                @input="handleInput"
+                @change="handleChange">
+        <div :class="[prefixCls + '-group-append']" v-if="append" v-show="slotReady">
+           <Icon :type="rightIcon"></Icon>
+        </div>
     </div>
 </template>
 <script>
     import { oneOf, findComponentUpward } from '../../utils/assist';
     import calcTextareaHeight from '../../utils/calcTextareaHeight';
     import Emitter from '../../mixins/emitter';
+
     const prefixCls = 'ivu-input';
+
     export default {
-        name: 'Input',
+        name: 'InputField',
         mixins: [ Emitter ],
         props: {
             type: {
@@ -95,6 +70,7 @@
                 default: false
             },
             icon: String,
+            rightIcon: String,
             autosize: {
                 type: [Boolean, Object],
                 default: false
@@ -140,7 +116,8 @@
                     return oneOf(value, ['hard', 'soft']);
                 },
                 default: 'soft'
-            }
+            },
+
         },
         data () {
             return {
@@ -149,7 +126,8 @@
                 prepend: true,
                 append: true,
                 slotReady: false,
-                textareaStyles: {}
+                textareaStyles: {},
+                activeInput :false,
             };
         },
         computed: {
@@ -163,7 +141,8 @@
                         [`${prefixCls}-group-${this.size}`]: (this.prepend || this.append) && !!this.size,
                         [`${prefixCls}-group-with-prepend`]: this.prepend,
                         [`${prefixCls}-group-with-append`]: this.append,
-                        [`${prefixCls}-hide-icon`]: this.append  // #554
+                        [`${prefixCls}-hide-icon`]: this.append,  // #554
+                        [`${prefixCls}-group-active`]: this.activeInput,
                     }
                 ];
             },
@@ -172,7 +151,8 @@
                     `${prefixCls}`,
                     {
                         [`${prefixCls}-${this.size}`]: !!this.size,
-                        [`${prefixCls}-disabled`]: this.disabled
+                        [`${prefixCls}-disabled`]: this.disabled,
+                        [`${prefixCls}-has-value`] :this.currentValue
                     }
                 ];
             },
@@ -183,7 +163,10 @@
                         [`${prefixCls}-disabled`]: this.disabled
                     }
                 ];
-            }
+            },
+
+
+
         },
         methods: {
             handleEnter (event) {
@@ -203,12 +186,14 @@
             },
             handleFocus (event) {
                 this.$emit('on-focus', event);
+                this.activeInput = true;
             },
             handleBlur (event) {
                 this.$emit('on-blur', event);
                 if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
                     this.dispatch('FormItem', 'on-form-blur', this.currentValue);
                 }
+                this.activeInput = false
             },
             handleInput (event) {
                 let value = event.target.value;
@@ -235,8 +220,10 @@
                 if (!autosize || this.type !== 'textarea') {
                     return false;
                 }
+
                 const minRows = autosize.minRows;
                 const maxRows = autosize.maxRows;
+
                 this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
             },
             focus () {
@@ -258,7 +245,8 @@
                 this.$emit('input', '');
                 this.setCurrentValue('');
                 this.$emit('on-change', e);
-            }
+            },
+
         },
         watch: {
             value (val) {
@@ -276,5 +264,7 @@
             this.slotReady = true;
             this.resizeTextarea();
         }
+
     };
+
 </script>
