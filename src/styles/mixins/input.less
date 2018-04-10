@@ -53,7 +53,7 @@
     position: relative;
     cursor: text;
     .placeholder();
-    transition: border @transition-time @ease-in-out, box-shadow @transition-time @ease-in-out;
+    transition: box-shadow @transition-time @ease-in-out;
 
     &:hover {
         .hover();
@@ -90,11 +90,9 @@
 
 .input-error() {
     border: 1px solid @error-color;
+    background-color: fade(@error-color , 6%);
     &:hover {
         .hover-error;
-    }
-    &:focus {
-        .active-error;
     }
 }
 
@@ -288,12 +286,21 @@
 
 }
 
+.input-group-error {
+    &-active {
+        .active-error()
+    }
+    &-with-prepend {
+        border: none;
+    }
+}
 .input-group-error{
     &-prepend,
     &-append
     {
-        background-color: #fff;
+        background-color: fade(@error-color,6%);
         border: 1px solid @error-color;
+        color: fade(@error-color,40%);
         .@{css-prefix}select {
             &-selection {
                 background-color: inherit;

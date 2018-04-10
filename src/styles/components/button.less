@@ -88,6 +88,7 @@
         .btn-color(@info-color);
     }
     &-primary-arrow {
+        transition: all @transition-time;
         .btn-color(@primary-color);
         .ivu-icon {
             position: relative;
@@ -96,6 +97,10 @@
         }
     }
     &-primary-arrow:hover {
+        box-shadow: 0 0.7rem 1.4rem #e0e2e8, 0 0.3rem 0.6rem rgba(12, 14, 27, 0.065);
+        transform: translateY(-0.2rem);
+        transition-duration: .45s;
+        transition: all @transition-time ease;
         .ivu-icon {
             left: 6px;
             transition: left @transition-time ease;
