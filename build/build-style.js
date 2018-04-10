@@ -20,6 +20,14 @@ gulp.task('css', function () {
 gulp.task('fonts', function () {
     gulp.src('../src/styles/common/iconfont/fonts/*.*')
         .pipe(gulp.dest('../dist/styles/fonts'));
+
+});
+
+// 拷贝png
+gulp.task('png', function () {
+    gulp.src('../src/styles/common/iconfont/assets/*.*')
+        .pipe(gulp.dest('../dist/styles/assets'));
+
 });
 
 gulp.task('default', ['css', 'fonts']);
