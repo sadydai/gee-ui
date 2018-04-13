@@ -72,7 +72,8 @@
                 navStyle: {
                     transform: ''
                 },
-                scrollable: false
+                scrollable: false,
+                firstInit: true
             };
         },
         computed: {
@@ -90,7 +91,8 @@
                 return [
                     `${prefixCls}-content`,
                     {
-                        [`${prefixCls}-content-animated`]: this.animated
+                        [`${prefixCls}-content-animated`]: this.animated,
+                        [`${prefixCls}-content-no-animated`]: this.firstInit
                     }
                 ];
             },
@@ -98,7 +100,9 @@
                 return [
                     `${prefixCls}-ink-bar`,
                     {
-                        [`${prefixCls}-ink-bar-animated`]: this.animated
+                        [`${prefixCls}-ink-bar-animated`]: this.animated,
+                        [`${prefixCls}-ink-bar-no-animated`]: this.firstInit
+
                     }
                 ];
             },
@@ -117,7 +121,8 @@
             barStyle () {
                 let style = {
                     display: 'none',
-                    width: `${this.barWidth}px`
+                    width: `20px`,
+                    left: `${(this.barWidth)/2 - 10}px`,
                 };
                 if (this.type === 'line') style.display = 'block';
                 if (this.animated) {
@@ -162,7 +167,7 @@
 
                     if (index > 0) {
                         let offset = 0;
-                        const gutter = this.size === 'small' ? 0 : 16;
+                        const gutter = this.size === 'small' ? 0 : 24;
                         for (let i = 0; i < index; i++) {
                             offset += parseFloat(prevTabs[i].offsetWidth) + gutter;
                         }
@@ -188,6 +193,7 @@
                 ];
             },
             handleChange (index) {
+                this.firstInit = false
                 const nav = this.navList[index];
                 if (nav.disabled) return;
                 this.activeKey = nav.name;
@@ -195,6 +201,7 @@
                 this.$emit('on-click', nav.name);
             },
             handleRemove (index) {
+                this.firstInit = false
                 const tabs = this.getTabs();
                 const tab = tabs[index];
                 tab.$destroy();
@@ -233,6 +240,7 @@
                 }
             },
             scrollPrev() {
+                this.firstInit = false
                 const containerWidth = this.$refs.navScroll.offsetWidth;
                 const currentOffset = this.getCurrentScrollOffset();
 
@@ -245,6 +253,7 @@
                 this.setOffset(newOffset);
             },
             scrollNext() {
+                this.firstInit = false;
                 const navWidth = this.$refs.nav.offsetWidth;
                 const containerWidth = this.$refs.navScroll.offsetWidth;
                 const currentOffset = this.getCurrentScrollOffset();
@@ -336,6 +345,7 @@
             }
         },
         mounted () {
+            this.firstInit = true;
             this.showSlot = this.$slots.extra !== undefined;
             this.observer = elementResizeDetectorMaker();
             this.observer.listenTo(this.$refs.navWrap, this.handleResize);

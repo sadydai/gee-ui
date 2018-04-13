@@ -12,20 +12,24 @@
     }
 
     &-ink-bar {
-        height: 2px;
+        height: 3px;
         box-sizing: border-box;
-        background-color: @primary-color;
+        background-color:@input-prepend-icon ;
         position: absolute;
         left: 0;
         bottom: 1px;
         z-index: 1;
         transition: transform .3s @ease-in-out;
         transform-origin: 0 0;
+        border-radius: 1px;
+    }
+    &-ink-bar-no-animated {
+        transition: none ;
     }
 
     &-bar {
-        border-bottom: 1px solid @border-color-base;
-        margin-bottom: 16px;
+        //border-bottom: 1px solid @border-color-base;
+        margin-bottom: 34px;
     }
 
     &-nav-container {
@@ -109,20 +113,24 @@
         .@{tabs-prefix-cls}-tab {
             display: inline-block;
             height: 100%;
-            padding: 8px 16px;
-            margin-right: 16px;
+            padding: 0 0 15px 0;
+            margin-right: 24px;
             box-sizing: border-box;
             cursor: pointer;
             text-decoration: none;
             position: relative;
+            font-size: 18px;
+            color: fade(@text-color, 40%);
             transition: color .3s @ease-in-out;
 
             &:hover {
-                color: @link-hover-color;
+                color: @text-color;
+                font-weight: 500;
             }
-
             &:active {
-                color: @link-active-color;
+                color: @text-color;
+                font-weight: 500;
+
             }
             .@{css-prefix-iconfont} {
                 width: 14px;
@@ -132,7 +140,8 @@
         }
 
         .@{tabs-prefix-cls}-tab-active {
-            color: @primary-color;
+            color: @text-color;
+            font-weight: 500;
         }
     }
     &-mini &-nav-container {
@@ -151,6 +160,9 @@
             flex-direction: row;
             will-change: transform;
             transition: transform .3s @ease-in-out;
+        }
+        .@{tabs-prefix-cls}-content-no-animated {
+            transition: none !important;
         }
 
         .@{tabs-prefix-cls}-tabpane {

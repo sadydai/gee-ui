@@ -62,7 +62,7 @@
                 return [
                     `${this.prefixCls}`,
                     {
-                        [`${this.className}`]: !!this.className
+                        [`${this.className}`]: !!this.className,
                     }
                 ];
             }
@@ -70,7 +70,6 @@
         methods: {
             add (notice) {
                 const name = notice.name || getUuid();
-
                 let _notice = Object.assign({
                     styles: {
                         right: '50%'

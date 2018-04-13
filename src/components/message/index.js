@@ -17,7 +17,8 @@ const iconTypes = {
     'success': 'checkmark-circled',
     'warning': 'android-alert',
     'error': 'close-circled',
-    'loading': 'load-c'
+    'loading': 'load-c',
+    'headError': ''
 };
 
 function getMessageInstance () {
@@ -36,6 +37,7 @@ function notice (content = '', duration = defaults.duration, type, onClose = fun
 
     // if loading
     const loadCls = type === 'loading' ? ' ivu-load-loop' : '';
+
 
     let instance = getMessageInstance();
 
@@ -83,6 +85,9 @@ export default {
     },
     loading (options) {
         return this.message('loading', options);
+    },
+    headError (options) {
+        return this.message('headError',options)
     },
     message(type, options){
         if (typeof options === 'string') {

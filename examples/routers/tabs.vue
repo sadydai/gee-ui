@@ -1,22 +1,23 @@
 <template>
-    <Tabs value="name1" :animated="false">
-        <Tab-pane label="test" name="test">
-            <Tabs type="card" v-bind:animated="true">
-                <Tab-pane label="标签2一">标签2一的内容</Tab-pane>
-                <Tab-pane label="标签2二">标签2二的内容</Tab-pane>
-                <Tab-pane label="标签2三">标签2三的内容</Tab-pane>
-            </Tabs>
-        </Tab-pane>
-        <Tab-pane :label="label1" name="name1">
-            <Table :columns="columns1" :data="data1"></Table>
-        </Tab-pane>
-        <Tab-pane label="标签二" name="name2">
-            <Table :columns="columns1" :data="data1"></Table>
-        </Tab-pane>
-        <Tab-pane label="标签三" name="name3">
-            <Table :columns="columns1" :data="data1"></Table>
-        </Tab-pane>
-    </Tabs>
+    <!--<Tabs value="name1" :animated="false">-->
+        <!--<Tab-pane label="test" name="test">-->
+
+        <!--</Tab-pane>-->
+        <Tabs  v-bind:animated="true" value = 'name2'>
+            <Tab-pane label="标签" name="name1">标签</Tab-pane>
+            <Tab-pane label="标签"  name="name2">标签</Tab-pane>
+            <Tab-pane label="标签内容" name="name3">标签内容</Tab-pane>
+        </Tabs>
+        <!--<Tab-pane :label="label1" name="name1">-->
+            <!--<Table :columns="columns1" :data="data1"></Table>-->
+        <!--</Tab-pane>-->
+        <!--<Tab-pane label="标签二" name="name2">-->
+            <!--<Table :columns="columns1" :data="data1"></Table>-->
+        <!--</Tab-pane>-->
+        <!--<Tab-pane label="标签三" name="name3">-->
+            <!--<Table :columns="columns1" :data="data1"></Table>-->
+        <!--</Tab-pane>-->
+    <!--</Tabs>-->
 </template>
 <script>
     export default {

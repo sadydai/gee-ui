@@ -74,7 +74,13 @@
                         this.$Message.success('提交成功!');
 
                     } else {
-                        this.$Message.error('表单验证失败!');
+                        this.$Message.headError(
+                        {
+                            content:'表单验证失败!',
+                            closable: true,
+                            duration: 0
+                        });
+
                     }
                     this.loading = false;
                 })
