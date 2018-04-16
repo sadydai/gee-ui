@@ -5,16 +5,16 @@
 
         <h2>test input field</h2>
         <div class="input-field">
-            <InputField icon="ios-search" rightIcon= "ios-search" :type="type" v-model="value1">
+            <InputField icon="icon-icon-email" rightIcon= "ios-search" :type="type" v-model="value1">
                 <span slot="prepend"></span>
             </InputField>
             <div @click="handle" class="eye-icon">
-                <Icon class="ivu-icon-ios-search" :class= "{'hide-opcity' : type == 'password'}"></Icon>
+                <Icon class="icon-icon-password-on" :class= "{'hide-opcity' : type == 'password'}"></Icon>
             </div>
         </div>
 
         <h3> re password</h3>
-        <InputField icon="ios-search" rightIcon= "ios-search" :type="type" v-model="value2">
+        <InputField icon="icon-icon-email" rightIcon= "icon-icon-password-on" :type="type" v-model="value2">
             <span slot="prepend"></span>
         </InputField>
 

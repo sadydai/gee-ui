@@ -2,14 +2,14 @@
 // --------------------------
 
 @font-face {
- font-family: @ionicons-font-family;
- src:url("@{ionicons-font-path}/ionicons.eot?v=@{ionicons-version}");
- src:url("@{ionicons-font-path}/ionicons.eot?v=@{ionicons-version}#iefix") format("embedded-opentype"),
-  url("@{ionicons-font-path}/ionicons.ttf?v=@{ionicons-version}") format("truetype"),
-  url("@{ionicons-font-path}/ionicons.woff?v=@{ionicons-version}") format("woff"),
-  url("@{ionicons-font-path}/ionicons.svg?v=@{ionicons-version}#Ionicons") format("svg");
- font-weight: normal;
- font-style: normal;
+    font-family: 'icomoon';
+    src:  url('./fonts/icomoon.eot?2un3je');
+    src:  url('./fonts/icomoon.eot?2un3je#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?2un3je') format('truetype'),
+    url('./fonts/icomoon.woff?2un3je') format('woff'),
+    url('./fonts/icomoon.svg?2un3je#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .ivu-icon() {
@@ -28,4 +28,61 @@
 
 .ivu-icon {
     .ivu-icon();
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon-arrow:before {
+    content: "\e900";
+    //color: #fff;
+}
+.icon-icon-company:before {
+    content: "\e901";
+    //color: #93a2bb;
+}
+.icon-icon-email:before {
+    content: "\e902";
+    //color: #93a2bb;
+}
+.icon-icon-password-on:before {
+    content: "\e903";
+    //color: #93a2bb;
+}
+.icon-icon-password:before {
+    content: "\e904";
+    //color: #93a2bb;
+}
+.icon-icon-phonenum:before {
+    content: "\e905";
+    //color: #93a2bb;
+}
+.icon-icon-phonetext:before {
+    content: "\e906";
+    //color: #93a2bb;
+}
+.icon-icon-qq:before {
+    content: "\e907";
+    //color: #93a2bb;
+}
+.icon-icon-website:before {
+    content: "\e908";
+    //color: #93a2bb;
+}
+.icon-icon-zone:before {
+    content: "\e909";
+    //color: #93a2bb;
 }

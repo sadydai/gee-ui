@@ -13,7 +13,7 @@
         },
         computed: {
             classes () {
-                return `${prefixCls} ${prefixCls}-${this.type}`;
+                return `${this.type}`;
             },
             styles () {
                 let style = {};
