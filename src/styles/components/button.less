@@ -8,8 +8,8 @@
         width: 100%;
     }
 
-    & > .ivu-icon + span, & > span + .ivu-icon {
-        margin-left: 4px;
+    & > .ivu-icon + span, & > span + i[class^="icon-"],& > .icon-loading {
+        margin-left: 8px;
     }
 
     &-primary {
@@ -92,7 +92,10 @@
         transition: all @transition-time;
         .btn-color(@primary-color);
         font-size: @font-size-large;
-        .ivu-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        i[class^="icon-"] {
             position: relative;
             left: 4px;
             transition: left @transition-time ease;
@@ -103,7 +106,7 @@
         transform: translateY(-0.2rem);
         transition-duration: .45s;
         transition: all @transition-time ease;
-        .ivu-icon {
+        i[class^="icon-"]{
             left: 6px;
             transition: left @transition-time ease;
         }

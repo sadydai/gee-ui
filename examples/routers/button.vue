@@ -5,9 +5,12 @@
         <Button type="ghost">Ghost</Button>
         <Button type="dashed">Dashed</Button>
         <Button type="text">Text</Button>
-        <Button type="primary-arrow"  icon ="ios-search" iconPosition="right" @click="loading =true" :loading=loading>
-            primary-arrow
-        </Button>
+        <div style="width:290px">
+            <Button type="primary-arrow"  icon ="icon-arrow" iconPosition="right" @click="loading =true" :loading=loading>
+                primary-arrow
+            </Button>
+        </div>
+
         <br><br>
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>

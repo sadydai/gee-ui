@@ -6,9 +6,9 @@
         @click="handleClick">
 
         <Icon :type="icon" v-if="icon && !loading && iconPosition == 'left'"></Icon>
-        <span v-if="showSlot" ref="slot"><slot></slot></span>
+        <span v-if="showSlot" ref="slot" class="btn-text"><slot></slot></span>
         <Icon :type="icon" v-if="icon && !loading && iconPosition == 'right'"></Icon>
-        <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon>
+        <Icon class="ivu-load-loop" type="icon-loading" v-if="loading"></Icon>
     </button>
 </template>
 <script>

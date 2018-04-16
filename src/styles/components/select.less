@@ -37,6 +37,23 @@
             }
         }
     }
+    .@{select-prefix-cls}-group-prepend {
+        width: 40px;
+        display: inline-flex;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid @border-color-base;
+        padding: 12px 12px;
+        font-size: inherit;
+        font-weight: 400;
+        line-height: 1;
+        color: @input-prepend-icon;
+        text-align: center;
+        background-color: @input-active-bg;
+        border-bottom-left-radius:3px;
+        border-top-left-radius:3px
+    }
 
     &-show-clear &-selection:hover .@{select-prefix-cls}-arrow:nth-of-type(2){
         display: none;
@@ -47,6 +64,10 @@
     }
 
     &-visible{
+        .@{select-prefix-cls}-group-prepend {
+            background: @primary-color;
+            color:@input-bg ;
+        }
         .@{select-prefix-cls}-selection{
             .active();
         }
@@ -80,19 +101,22 @@
             }
         }
     }
-
+    &-actived-select &-selection{
+        background-color: @input-active-bg;
+    }
     &-single &-selection{
         height: @input-height-base;
         position: relative;
-
+        display: inline-flex;
+        width: 100%;
         .@{select-prefix-cls}-placeholder{
             color: @input-placeholder-color;
         }
 
         .@{select-prefix-cls}-placeholder, .@{select-prefix-cls}-selected-value{
-            display: block;
-            height: @input-height-base - 2px;
-            line-height: @input-height-base - 2px;
+            display: inline-block;
+            height: @input-height-base ;
+            line-height: @input-height-base;
             font-size: @font-size-small;
             overflow: hidden;
             text-overflow: ellipsis;

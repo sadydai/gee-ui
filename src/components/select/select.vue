@@ -9,6 +9,9 @@
             ref="reference"
             @click="toggleMenu">
             <slot name="input">
+                <div :class="[prefixCls + '-group-prepend' ]" v-if="prepend&&icon">
+                    <Icon v-if="prepend" :type="icon"></Icon>
+                </div>
                 <input type="hidden" :name="name" :value="model">
                 <div class="ivu-tag ivu-tag-checked" v-for="(item, index) in selectedMultiple">
                     <span class="ivu-tag-text">{{ item.label }}</span>
@@ -145,7 +148,8 @@
             },
             elementId: {
                 type: String
-            }
+            },
+            icon: String,
         },
         data () {
             return {
@@ -163,7 +167,8 @@
                 notFound: false,
                 slotChangeDuration: false,    // if slot change duration and in multiple, set true and after slot change, set false
                 model: this.value,
-                currentLabel: this.label
+                currentLabel: this.label,
+                prepend: true
             };
         },
         computed: {
@@ -176,7 +181,9 @@
                         [`${prefixCls}-multiple`]: this.multiple,
                         [`${prefixCls}-single`]: !this.multiple,
                         [`${prefixCls}-show-clear`]: this.showCloseIcon,
-                        [`${prefixCls}-${this.size}`]: !!this.size
+                        [`${prefixCls}-${this.size}`]: !!this.size,
+                        [`${prefixCls}-actived-select`]: !this.showPlaceholder && !this.multiple && !this.filterable
+
                     }
                 ];
             },
@@ -189,7 +196,9 @@
             },
             selectionCls () {
                 return {
-                    [`${prefixCls}-selection`]: !this.autoComplete
+                    [`${prefixCls}-selection`]: !this.autoComplete,
+                    [`${prefixCls}-group-prepend`]: !this.prepend
+
                 };
             },
             showPlaceholder () {
