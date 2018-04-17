@@ -1,6 +1,6 @@
 <template>
     <div style="width: 250px;margin: 100px;">
-        <Input v-model="value5" type="text" placeholder="邮箱" icon="ios-search"></Input>
+        <Input v-model="value5" type="text" placeholder="邮箱" icon="ios-search" disabled></Input>
         <Input v-model="value6" type="text"  placeholder="Enter something..." clearable></Input>
 
         <h2>test input field</h2>

@@ -6,7 +6,7 @@
         <Button type="dashed">Dashed</Button>
         <Button type="text">Text</Button>
         <div style="width:290px">
-            <Button type="primary-arrow"  icon ="icon-arrow" iconPosition="right" @click="loading =true" :loading=loading>
+            <Button type="primary-arrow"  icon ="icon-arrow" iconPosition="right" @click="loading =true" :loading=loading disabled>
                 primary-arrow
             </Button>
         </div>
