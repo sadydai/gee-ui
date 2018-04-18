@@ -14,7 +14,7 @@
         </div>
 
         <h3> re password</h3>
-        <InputField icon="icon-icon-email" rightIcon= "icon-icon-password-on" :type="type" v-model="value2">
+        <InputField icon="icon-icon-email" rightIcon= "icon-icon-password-on" :type="type" v-model="value2" disabled>
             <span slot="prepend"></span>
         </InputField>
 

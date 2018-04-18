@@ -1,5 +1,5 @@
 .hover(@color: @input-hover-border-color) {
-    border-color: tint(@color, 20%);
+    border-color: tint(@color, 40%);
 }
 .hover-error() {
     border-color: @error-color;
@@ -227,6 +227,11 @@
             .hover();
         }
     }
+    &-disabled {
+        &:hover{
+            border-color: @border-color-base;
+        }
+    }
     &-with-prepend > &-prepend ,
     &-with-prepend > input,
     &-with-prepend > &-append
@@ -246,7 +251,7 @@
     &-active > &-prepend {
         background: @primary-color;
         color:@input-bg ;
-        border-right: 1px solid @primary-color;
+        border-right: 1px solid fade(@primary-color,40%);
     }
     &-active > input {
         background: @input-active-bg;

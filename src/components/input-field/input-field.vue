@@ -142,6 +142,7 @@
                         [`${prefixCls}-group-with-append`]: this.append,
                         [`${prefixCls}-hide-icon`]: this.append,  // #554
                         [`${prefixCls}-group-active`]: this.activeInput,
+                        [`${prefixCls}-group-disabled`] : this.disabled
                     }
                 ];
             },
