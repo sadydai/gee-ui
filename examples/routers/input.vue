@@ -1,7 +1,7 @@
 <template>
     <div style="width: 250px;margin: 100px;">
         <Input v-model="value5" type="text" placeholder="邮箱" icon="ios-search" disabled></Input>
-        <Input v-model="value6" type="text"  placeholder="Enter something..." clearable></Input>
+        <Input v-model="value6" type="text"  placeholder="Enter something..." on-keypress="test($event)"></Input>
 
         <h2>test input field</h2>
         <div class="input-field">
@@ -45,6 +45,9 @@
                 else {
                     this.type = 'text'
                 }
+            },
+            test(e) {
+                console.log(e)
             }
         }
     }

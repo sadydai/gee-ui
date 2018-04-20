@@ -95,10 +95,15 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        padding: 14px 30px;
+        border-radius: 4px;
+        font-weight: 500;
+        border: none;
         i[class^="icon-"] {
+            font-size: 15px;
             position: relative;
-            left: 4px;
-            transition: left @transition-time ease;
+            left: 0px;
+            transition: all @transition-time ease;
         }
     }
     &-primary-arrow:hover {
@@ -107,8 +112,8 @@
         transition-duration: .45s;
         transition: all @transition-time ease;
         i[class^="icon-"]{
-            left: 6px;
-            transition: left @transition-time ease;
+            left: 8px;
+            transition: all @transition-time ease;
         }
     }
 
