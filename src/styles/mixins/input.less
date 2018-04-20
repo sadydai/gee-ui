@@ -6,7 +6,7 @@
 }
 
 .active(@color: @input-hover-border-color) {
-    border-color: @primary-color !important;
+    border-color: @primary-color;
     outline: 0;
     //box-shadow: 0 0 3px 0 fade(@color, 49%);
 }
@@ -219,6 +219,11 @@
     &-prepend {
         border-right: 0;
     }
+    &-active {
+        background: @input-active-bg;
+        //.active()
+        border-color: @primary-color !important;
+    }
     &-with-prepend {
         border: 1px solid @input-border-color;
         border-radius: @border-radius-small;
@@ -244,10 +249,7 @@
     &-with-prepend > input:focus {
         box-shadow: none;
     }
-    &-active {
-        background: @input-active-bg;
-        .active()
-    }
+
     &-active > &-prepend {
         background: @primary-color;
         color:@input-bg ;
