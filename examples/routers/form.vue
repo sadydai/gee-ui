@@ -10,7 +10,7 @@
                         </InputField>
                     </Form-item>
                     <Form-item prop="password">
-                        <InputField icon="ios-search" rightIcon="ios-search" :type="type" placeholder="请输入密码"
+                        <InputField icon="icon-icon-password-on" rightIcon="ios-search" :type="type" placeholder="请输入密码"
                                     v-model="formValidate.password">
                             <span slot="prepend"></span>
                         </InputField>
