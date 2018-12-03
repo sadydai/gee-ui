@@ -23266,7 +23266,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '2.11.2',
+    version: '2.11.3',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
