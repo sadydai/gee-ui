@@ -24,8 +24,13 @@
                             <span slot="prepend"></span>
                         </InputField>
                     </Form-item>
-
-
+                     <Form-item prop="area">
+                        <Select v-model="formValidate.area" size="large" icon="icon-zone"
+                                placeholder="请选择区域" label="区域">
+                            <Option v-for="item in ['sd','dsfdsf']" :value="item" :key="item">{{ item }}
+                            </Option>
+                        </Select>
+                    </Form-item>
                     <Form-item>
                         <Button type="primary-arrow" icon="ios-search" iconPosition="right"
                                 @click="handleSubmit('formValidate')" :loading=loading>
@@ -46,7 +51,8 @@
                 formValidate: {
                     mail: '',
                     password:'',
-                    test:''
+                    test:'',
+                    area:''
                 },
                 ruleValidate: {
                     mail: [
@@ -60,8 +66,8 @@
                     test: [
                         {pattern:'(?![0-9]*$)(?![a-z A-Z]*$)[a-z A-Z 0-9]{6,}',message:'请输入超过6位的由字母和数字组合的密码', trigger:'blur'},
                         {pattern:'(?![0-9]*$)(?![a-z A-Z]*$)[a-z A-Z 0-9]{6,}',message:'请输入超过6位的由字母和数字组合的密码', trigger:'change'},
-
-                    ]
+                    ],
+                    area: [ {required: true,  message:'此为必填项', trigger: 'change'},]
                 },
                  type:'password'
             }
@@ -105,7 +111,7 @@
 
     .eye-icon {
         position: absolute;
-        top: 2px;
+        top: 34px;
         right: 0;
         line-height: 44px;
         height: 44px;

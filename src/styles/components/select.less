@@ -37,6 +37,17 @@
             }
         }
     }
+    &-label{
+        font-size: 16px;
+        display: inline-block;
+        line-height: 16px;
+        margin-bottom: 8px;
+
+    }
+    &-visible-label{
+        color: @primary-color
+    }
+    
     .@{select-prefix-cls}-group-prepend {
         width: 40px;
         display: inline-flex;
@@ -263,6 +274,7 @@
         list-style: none;
     }
 }
+
 
 .select-item(@select-prefix-cls, @select-item-prefix-cls);
 

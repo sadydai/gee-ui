@@ -723,10 +723,10 @@
         <br><br>
         <br><br>
 
-        <Select v-model="model10"  style="width:260px" icon="icon-email"placeholder="">
+        <Select v-model="model10"  style="width:260px" icon="icon-email" placeholder="">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
-        <Select v-model="model10"  style="width:260px" icon="icon-password"placeholder="">
+        <Select v-model="model10"  style="width:260px" icon="icon-password" placeholder="" label="密码">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
     </div>

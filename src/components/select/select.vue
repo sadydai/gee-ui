@@ -4,6 +4,7 @@
         @keydown.down="handleFocus"
         :class="classes"
         v-clickoutside="handleClose">
+        <label v-if="label" :class="labelClass"> {{label}}</label>
         <div
             :class="selectionCls"
             ref="reference"
@@ -13,7 +14,7 @@
                     <Icon v-if="prepend" :type="icon"></Icon>
                 </div>
                 <input type="hidden" :name="name" :value="model">
-                <div class="ivu-tag ivu-tag-checked" v-for="(item, index) in selectedMultiple">
+                <div class="ivu-tag ivu-tag-checked" v-for="(item, index) in selectedMultiple" :key="index">
                     <span class="ivu-tag-text">{{ item.label }}</span>
                     <Icon type="ios-close-empty" @click.native.stop="removeTag(index)"></Icon>
                 </div>
@@ -150,6 +151,9 @@
                 type: String
             },
             icon: String,
+            label:{
+                type: String
+            }
         },
         data () {
             return {
@@ -186,6 +190,12 @@
 
                     }
                 ];
+            },
+            labelClass(){
+                return [
+                    `${prefixCls}-label`,
+                    {[`${prefixCls}-visible-label`]: this.visible,}
+                ]
             },
             dropdownCls () {
                 return {
