@@ -1,33 +1,36 @@
 <template>
-    <div :class="wrapClasses">
-        <div :class="[prefixCls + '-group-prepend' ]" v-if="prepend" v-show="slotReady">
-            <Icon v-if="prepend" :type="icon"></Icon>
-        </div>
-        <input
-                :id="elementId"
-                :autocomplete="autocomplete"
-                :spellcheck="spellcheck"
-                ref="input"
-                :type="type"
-                :class="inputClasses"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :maxlength="maxlength"
-                :readonly="readonly"
-                :name="name"
-                :value="currentValue"
-                :number="number"
-                :autofocus="autofocus"
-                @keyup.enter="handleEnter"
-                @keyup="handleKeyup"
-                @keypress="handleKeypress"
-                @keydown="handleKeydown"
-                @focus="handleFocus"
-                @blur="handleBlur"
-                @input="handleInput"
-                @change="handleChange">
-        <div :class="[prefixCls + '-group-append']" v-if="append" v-show="slotReady">
-           <Icon :type="rightIcon"></Icon>
+    <div>
+        <label v-if="label" :class="labelClass">{{label}}</label>
+        <div :class="wrapClasses">
+            <div :class="[prefixCls + '-group-prepend' ]" v-if="prepend" v-show="slotReady">
+                <Icon v-if="prepend" :type="icon"></Icon>
+            </div>
+            <input
+                    :id="elementId"
+                    :autocomplete="autocomplete"
+                    :spellcheck="spellcheck"
+                    ref="input"
+                    :type="type"
+                    :class="inputClasses"
+                    :placeholder="placeholder"
+                    :disabled="disabled"
+                    :maxlength="maxlength"
+                    :readonly="readonly"
+                    :name="name"
+                    :value="currentValue"
+                    :number="number"
+                    :autofocus="autofocus"
+                    @keyup.enter="handleEnter"
+                    @keyup="handleKeyup"
+                    @keypress="handleKeypress"
+                    @keydown="handleKeydown"
+                    @focus="handleFocus"
+                    @blur="handleBlur"
+                    @input="handleInput"
+                    @change="handleChange">
+            <div :class="[prefixCls + '-group-append']" v-if="append" v-show="slotReady">
+            <Icon :type="rightIcon"></Icon>
+            </div>
         </div>
     </div>
 </template>
@@ -116,6 +119,9 @@
                 },
                 default: 'soft'
             },
+            label:{
+                type: String
+            }
 
         },
         data () {
@@ -145,6 +151,14 @@
                         [`${prefixCls}-group-disabled`] : this.disabled
                     }
                 ];
+            },
+             labelClass(){
+                return [
+                    `${prefixCls}-label`,
+                    {[`${prefixCls}-label-active`]: this.activeInput,}
+                    
+
+                ]
             },
             inputClasses () {
                 return [

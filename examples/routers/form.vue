@@ -11,7 +11,7 @@
                     </Form-item>
                     <Form-item prop="password">
                         <InputField icon="icon-icon-password-on" rightIcon="ios-search" :type="type" placeholder="请输入密码"
-                                    v-model="formValidate.password">
+                                    v-model="formValidate.password" label="密码">
                             <span slot="prepend"></span>
                         </InputField>
                         <div @click="handle" class="eye-icon">
