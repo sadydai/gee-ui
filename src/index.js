@@ -17,7 +17,7 @@ import Content from './components/content';
 import DatePicker from './components/date-picker';
 import Dropdown from './components/dropdown';
 import Footer from './components/footer';
-import Form from './components/form';
+import GtForm from './components/form';
 import Header from './components/header';
 import Icon from './components/icon';
 import Input from './components/input';
@@ -80,8 +80,8 @@ const components = {
     DropdownItem: Dropdown.Item,
     DropdownMenu: Dropdown.Menu,
     Footer: Footer,
-    Form,
-    FormItem: Form.Item,
+    GtForm,
+    FormItem: GtForm.Item,
     Header: Header,
     Icon,
     Input,
@@ -132,7 +132,7 @@ const iview = {
     iCircle: Circle,
     iCol: Col,
     iContent: Content,
-    iForm: Form,
+    iForm: GtForm,
     iFooter: Footer,
     iHeader: Header,
     iInput: Input,

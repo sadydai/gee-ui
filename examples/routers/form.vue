@@ -2,7 +2,7 @@
     <div>
         <Tabs type="card">
             <div style="width:290px">
-                <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
+                <GtForm ref="formValidate" :model="formValidate" :rules="ruleValidate" :lang="'lang'">
                     <Form-item prop="mail">
                         <InputField icon="ios-search" rightIcon="ios-search" type="email" placeholder="请输入邮箱"
                                     v-model="formValidate.mail">
@@ -37,7 +37,11 @@
                             立即登录
                         </Button>
                     </Form-item>
-                </Form>
+                </GtForm>
+
+                <div @click="changeRule()">
+                    改变规则
+                </div>
             </div>
         </Tabs>
 
@@ -97,6 +101,23 @@
                 }
                 else {
                     this.type = 'text'
+                }
+            },
+            changeRule(){
+                this.ruleValidate = {
+                    mail: [
+                        { required: true, message: 'email is required', trigger: 'change' },
+                        { required: true, message: 'email is required', trigger: 'blur' }
+                    ],
+                    password: [
+                        {required: true, message:'password is required', trigger: 'blur'},
+                        {required: true, message:'请输入密码', trigger: 'change'},
+                    ],
+                    test: [
+                        {pattern:'(?![0-9]*$)(?![a-z A-Z]*$)[a-z A-Z 0-9]{6,}',message:'请输入超过6位的由字母和数字组合的密码', trigger:'blur'},
+                        {pattern:'(?![0-9]*$)(?![a-z A-Z]*$)[a-z A-Z 0-9]{6,}',message:'请输入超过6位的由字母和数字组合的密码', trigger:'change'},
+                    ],
+                    area: [ {required: true,  message:'此为必填项', trigger: 'change'},]
                 }
             }
         }

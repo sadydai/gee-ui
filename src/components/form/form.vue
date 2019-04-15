@@ -38,6 +38,9 @@
                     return oneOf(value, ['on', 'off']);
                 },
                 default: 'off'
+            },
+            lang:{
+                default:''
             }
         },
         data () {
@@ -90,8 +93,12 @@
             }
         },
         watch: {
-            rules() {
-                this.validate();
+            rules(val) {
+                if(this.lang !== 'lang'){
+                    this.validate();
+                }else{
+                    this.resetFields()
+                }   
             }
         },
         created () {
