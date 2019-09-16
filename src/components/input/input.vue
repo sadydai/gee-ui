@@ -149,7 +149,8 @@
                 prepend: true,
                 append: true,
                 slotReady: false,
-                textareaStyles: {}
+                textareaStyles: {},
+                activeInput :false,
             };
         },
         computed: {
@@ -163,7 +164,8 @@
                         [`${prefixCls}-group-${this.size}`]: (this.prepend || this.append) && !!this.size,
                         [`${prefixCls}-group-with-prepend`]: this.prepend,
                         [`${prefixCls}-group-with-append`]: this.append,
-                        [`${prefixCls}-hide-icon`]: this.append  // #554
+                        [`${prefixCls}-hide-icon`]: this.append,  // #554
+                        [`${prefixCls}-group-active`]: this.activeInput
                     }
                 ];
             },
@@ -203,12 +205,14 @@
             },
             handleFocus (event) {
                 this.$emit('on-focus', event);
+                this.activeInput = true;
             },
             handleBlur (event) {
                 this.$emit('on-blur', event);
                 if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
                     this.dispatch('FormItem', 'on-form-blur', this.currentValue);
                 }
+                this.activeInput = false
             },
             handleInput (event) {
                 let value = event.target.value;
